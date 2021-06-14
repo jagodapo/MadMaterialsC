@@ -8,8 +8,10 @@
 import React from "react"
 // import Header from "../header/header"
 import Header2 from "../header/header"
+import * as globalStyles from "../../styles/index.scss"
+import * as layoutStyles from "./layoutFooterAbs.module.scss"
 
-import Footer from "../footer/footer"
+import FooterAbsolute from "../footer/footerAbsolute"
 import { makeStyles } from "@material-ui/core/styles"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { CssBaseline, Container } from "@material-ui/core"
@@ -25,28 +27,29 @@ const useStyles = makeStyles(theme => ({
     // display: "flex",
     // flexDirection: "column"
   },
-  wrapper: {
-    alignSelf: "center",
-    maxWidth: 1200,
-    margin: "0 auto",
-    // marginTop: 54,
-    flexGrow: 1,
+  // wrapper: {
+  //   alignSelf: "center",
+  //   maxWidth: 1200,
+  //   margin: "0 auto",
+  //   // marginTop: 54,
+  //   flexGrow: 1,
+  //   height: `calc(100% - ${header}px - ${footer}px)`,
 
-    [theme.breakpoints.up("sm")]: {
-      // marginTop: 74,
-    },
-  },
+  //   [theme.breakpoints.up("sm")]: {
+  //     // marginTop: 74,
+  //   },
+  // },
 }))
-const Layout = props => {
+const LayoutFooterAbs = props => {
   const classes = useStyles()
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <Header2 />
-      <main className={classes.wrapper}>{props.children}</main>
-      <Footer />
+      <main className={layoutStyles.wrapper}>{props.children}</main>
+      <FooterAbsolute />
     </MuiThemeProvider>
   )
 }
 
-export default Layout
+export default LayoutFooterAbs

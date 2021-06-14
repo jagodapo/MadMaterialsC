@@ -1,0 +1,10 @@
+@import "../../styles/index.scss";
+
+.wrapper {
+  align-self: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  // marginTop: 54,
+  flex-grow: 1;
+  height: calc(100vh - #{$header} - #{$footer});
+}

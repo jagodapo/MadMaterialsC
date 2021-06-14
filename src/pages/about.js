@@ -1,5 +1,5 @@
 import React from "react"
-import Layout from "../components/layout/layout"
+import LayoutFooterAbs from "../components/layout/layoutFooterAbs"
 import {
   Grid,
   Typography,
@@ -21,7 +21,7 @@ const styles = {
 
 const AboutPage = () => {
   return (
-    <Layout>
+    <LayoutFooterAbs>
       <Grid container justify="space-between">
         <Grid item xs={12} md={6} style={{ maxWidth: 450 }}>
           <Box m={5}>
@@ -48,7 +48,7 @@ const AboutPage = () => {
           <img style={{ width: "100%", height: "auto" }} src={Bloby} />
         </Grid>
       </Grid>
-    </Layout>
+    </LayoutFooterAbs>
   )
 }
 

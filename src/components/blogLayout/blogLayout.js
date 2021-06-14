@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
   wrapper: {
     alignSelf: "center",
-    maxWidth: 1200,
+    maxWidth: 800,
     margin: "0 auto",
     // marginTop: 54,
     flexGrow: 1,
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }))
-const Layout = props => {
+const BlogLayout = props => {
   const classes = useStyles()
   return (
     <MuiThemeProvider theme={theme}>
@@ -49,4 +49,4 @@ const Layout = props => {
   )
 }
 
-export default Layout
+export default BlogLayout

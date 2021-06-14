@@ -12,8 +12,7 @@ import {
   Box,
 } from "@material-ui/core"
 
-import { makeStyles } from "@material-ui/core/styles"
-import { useTheme } from "@material-ui/core/styles"
+import { makeStyles, useTheme } from "@material-ui/core/styles"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -47,10 +46,10 @@ const DiscoveryMaterialCard = () => {
       <CardActionArea p={0}>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
+          alt=""
           height="300"
           image="https://images.unsplash.com/photo-1623412910761-8929605372ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-          title="Contemplative Reptile"
+          title=""
         />
         <CardContent>
           <Typography gutterBottom variant="h3" component="h1">

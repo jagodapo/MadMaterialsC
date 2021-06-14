@@ -6,8 +6,7 @@
  */
 
 import React from "react"
-// import Header from "../header/header"
-import Header2 from "../header/header3"
+import Header from "../header/header"
 
 import Footer from "../footer/footer"
 import { makeStyles } from "@material-ui/core/styles"
@@ -34,7 +33,7 @@ const LayoutBackground = props => {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <Header2 />
+      <Header />
       <Box
         className={classes.marginTop}
         border={2}

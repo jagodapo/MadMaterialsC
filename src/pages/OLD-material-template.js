@@ -3,7 +3,7 @@ import Layout from "../components/layout/layout"
 import { Container, Box, Grid, Paper, Typography } from "@material-ui/core"
 import theme from "../theme"
 
-import styles from "../styles/style.scss"
+import styles from "../styles/index.scss"
 import { makeStyles } from "@material-ui/styles"
 
 const useStyles = makeStyles(theme => ({

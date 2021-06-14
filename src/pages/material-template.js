@@ -1,9 +1,8 @@
 import React from "react"
-import LayoutBackground from "../components/layoutBackground/layoutBackground"
+import LayoutBackground from "../components/layout/layoutBackground"
 import { Container, Box, Grid, Paper, Typography } from "@material-ui/core"
 import theme from "../theme"
 import PaintHighlight from "../components/svg/paint-highlight"
-import styles from "../styles/style.scss"
 import { makeStyles } from "@material-ui/styles"
 
 const useStyles = makeStyles(theme => ({
