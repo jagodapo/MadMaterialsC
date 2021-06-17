@@ -45,7 +45,7 @@ const Footer = () => {
           | created with the support from
           <a href="https://fundacja.orange.pl/en" target="_blank">
             the Orange Foundation
-          </a>{" "}
+          </a>
         </span>
       </Typography>
     </footer>
