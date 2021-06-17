@@ -1,6 +1,7 @@
 import React from "react"
 import { Typography, Paper } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import { graphql, useStaticQuery } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -25,15 +26,27 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Footer = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          author
+        }
+      }
+    }
+  `)
   const classes = useStyles()
   return (
     <footer className={classes.container}>
       <Typography color="primary" className={classes.copy} align="center">
         infomadmaterials@gmail.com | © 2020 Mad Materials all rights reserved |
-        created with the support from{" "}
-        <a href="https://fundacja.orange.pl/en" target="_blank">
-          the Orange Foundation
-        </a>
+        by {data.site.siteMetadata.author}
+        <span>
+          | created with the support from
+          <a href="https://fundacja.orange.pl/en" target="_blank">
+            the Orange Foundation
+          </a>{" "}
+        </span>
       </Typography>
     </footer>
   )

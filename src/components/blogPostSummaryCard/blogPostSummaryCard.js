@@ -69,12 +69,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const BlogPostSummaryCard = () => {
+const BlogPostSummaryCard = props => {
   const theme = useTheme()
   const classes = useStyles()
 
   return (
     <Card className={classes.root} elevation={0}>
+      {props.children}
       <div className={classes.copy}>
         <CardContent className={classes.cardContent}>
           <Typography variant="h2" component="h1">

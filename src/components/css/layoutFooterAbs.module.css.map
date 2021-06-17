@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACSA,AAAA,WAAW,CAAC;EACV,MAAM,EAAE,iBAAiB;EACzB,aAAa,EAAE,IAAI;CACpB;;ADVD,AAAA,QAAQ,CAAC;EACP,UAAU,EAAE,MAAM;EAClB,SAAS,EAAE,MAAM;EACjB,MAAM,EAAE,MAAM;EAEd,SAAS,EAAE,CAAC;EACZ,MAAM,EAAE,0BAAqC;CAC9C",
+    "sources": [
+        "../layout/layoutFooterAbs.module.scss",
+        "../../styles/index.scss"
+    ],
+    "names": [],
+    "file": "layoutFooterAbs.module.css"
+}

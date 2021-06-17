@@ -1,6 +1,7 @@
 import React from "react"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import LayoutFooterAbs from "../components/layout/layoutFooterAbs"
-import { Box, useMediaQuery } from "@material-ui/core"
+import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { relativeTimeThreshold } from "moment"
 import Img from "../images/bio-based-blog.png"
@@ -67,13 +68,43 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const BlogPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulBlogPost(sort: { fields: publishedDate, order: DESC }) {
+        edges {
+          node {
+            title
+            author
+            slug
+            publishedDate(formatString: "do MMMM, YYYY")
+          }
+        }
+      }
+    }
+  `)
   const theme = useTheme()
 
   const classes = useStyles()
   const isMedium = useMediaQuery(theme.breakpoints.down("md"))
 
+  console.log(data)
+
   return (
     <LayoutFooterAbs>
+      {data.allContentfulBlogPost.edges.map(edge => {
+        return (
+          <div key={edge.node.slug}>
+            <Link
+              to={`/blog/${edge.node.slug}`}
+              style={{ textDecoration: "none" }}
+            >
+              <Typography variant="h1">{edge.node.title}</Typography>
+              <Typography variant="body1">{edge.node.publishedDate}</Typography>
+            </Link>
+          </div>
+        )
+      })}
+
       {isMedium ? (
         <div className={classes.root}>
           <Box className={classes.imgWrapper}>

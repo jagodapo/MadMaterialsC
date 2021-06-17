@@ -54,6 +54,7 @@ const useStyles = makeStyles(theme => ({
 const imgStyle = {}
 const MaterialTemplate = () => {
   const classes = useStyles()
+
   return (
     <LayoutBackground>
       <Typography variant="h1" align="center">
