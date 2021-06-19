@@ -69,27 +69,7 @@ const DiscoverPage = () => {
             </Card>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={4}>
-            <MaterialDiscoveryCard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <MaterialDiscoveryCard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <MaterialDiscoveryCard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <MaterialDiscoveryCard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <MaterialDiscoveryCard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <MaterialDiscoveryCard />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <MaterialDiscoveryCard />
-          </Grid>
+          <MaterialDiscoveryCard />
         </Grid>
       </div>
     </Layout>

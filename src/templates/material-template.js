@@ -1,9 +1,25 @@
 import React from "react"
 import LayoutBackground from "../components/layout/layoutBackground"
-import { Container, Box, Grid, Paper, Typography } from "@material-ui/core"
+import { useStaticQuery, graphql, Link } from "gatsby"
+import { BLOCKS, MARKS } from "@contentful/rich-text-types"
+import {
+  Box,
+  Grid,
+  Paper,
+  Typography,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemIcon,
+  ListItemText,
+  Avatar,
+} from "@material-ui/core"
+import EcoIcon from "@material-ui/icons/Eco"
 import theme from "../theme"
 import PaintHighlight from "../components/svg/paint-highlight"
-import { makeStyles } from "@material-ui/styles"
+import { makeStyles, useTheme } from "@material-ui/styles"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { renderRichText } from "gatsby-source-contentful/rich-text"
 
 const useStyles = makeStyles(theme => ({
   position: {
@@ -50,15 +66,81 @@ const useStyles = makeStyles(theme => ({
       paddingLeft: theme.spacing(1),
     },
   },
+  applicationsTitle: {
+    textDecoration: "none",
+    display: "block",
+    fontSize: 16,
+  },
 }))
 const imgStyle = {}
-const MaterialTemplate = () => {
+
+export const query = graphql`
+  query($slug: String!) {
+    contentfulMaterialCard(slug: { eq: $slug }) {
+      slug
+      title
+      tags
+      about {
+        childMarkdownRemark {
+          rawMarkdownBody
+        }
+      }
+      advantages
+      disadvantages
+      commercialApplications {
+        raw
+      }
+      backgroundImage {
+        gatsbyImageData(width: 1200)
+        title
+        file {
+          url
+        }
+      }
+    }
+  }
+`
+
+const MaterialTemplate = ({ data }) => {
+  const theme = useTheme()
+
+  const options = {
+    renderMark: {
+      [MARKS.BOLD]: text => (
+        <Typography variant="h3" className={classes.applicationsTitle}>
+          {text}
+        </Typography>
+      ),
+    },
+    renderNode: {
+      [BLOCKS.PARAGRAPH]: (node, children) => (
+        <Box
+          bgcolor="background.default"
+          width="30%"
+          border={2}
+          border="primary.main"
+          p={1}
+          mb={1}
+          className={classes.fullWidth}
+        >
+          {children}
+        </Box>
+      ),
+    },
+  }
   const classes = useStyles()
+  const [dense, setDense] = React.useState(true)
+  const {
+    bodyRichText,
+  } = data.contentfulMaterialCard.commercialApplications.raw
+  const image = getImage(
+    data.contentfulMaterialCard.backgroundImage.gatsbyImageData
+  )
 
   return (
     <LayoutBackground>
       <Typography variant="h1" align="center">
-        Algae
+        {data.contentfulMaterialCard.title}
       </Typography>
       <Box margin="0 auto" position="relative" top="-20px">
         <PaintHighlight />
@@ -75,11 +157,12 @@ const MaterialTemplate = () => {
         m={0}
         p={0}
       >
-        <img
+        <GatsbyImage
           className={classes.image}
-          src="https://images.unsplash.com/photo-1623191220261-8dd4f75d77c6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80"
-          alt=""
+          image={image}
+          alt={data.contentfulMaterialCard.backgroundImage.title}
         />
+
         <Box
           bgcolor="secondary.main"
           position="absolute"
@@ -94,14 +177,15 @@ const MaterialTemplate = () => {
             Potential Applications
           </Typography>
           <Box display="flex" justifyContent="space-between" flexWrap="wrap">
+            {data.contentfulMaterialCard.tags.map(tag => {
+              return (
+                <Typography variant="button" component="div">
+                  #{tag.toUpperCase()}
+                </Typography>
+              )
+            })}
             <Typography variant="button" component="div">
               #PRODUCT
-            </Typography>
-            <Typography variant="button" component="div">
-              #INTERIOR
-            </Typography>
-            <Typography variant="button" component="div">
-              #ARCHITECTURE
             </Typography>
           </Box>
         </Box>
@@ -121,16 +205,11 @@ const MaterialTemplate = () => {
           <Typography variant="h3" component="h2">
             About
           </Typography>
-          <Typography variant="body1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            minus quibusdam suscipit aperiam sapiente a facilis eligendi
-            possimus quo aliquid explicabo quos voluptatem sit vel maxime
-            nostrum consequatur delectus earum similique, quod excepturi
-            perspiciatis nisi! Possimus commodi, aspernatur eligendi porro aut
-            incidunt expedita blanditiis quis ducimus repellat, aliquid
-            explicabo quisquam obcaecati architecto! Quis assumenda cumque nulla
-            dolores voluptate quisquam quam.
-          </Typography>
+
+          {
+            data.contentfulMaterialCard.about.childMarkdownRemark
+              .rawMarkdownBody
+          }
         </Box>
         <Box
           display="flex"
@@ -142,31 +221,33 @@ const MaterialTemplate = () => {
             <Typography variant="h3" component="h2">
               Advantages
             </Typography>
-            <Typography variant="body1">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Aspernatur minus quibusdam suscipit aperiam sapiente a facilis
-              eligendi possimus quo aliquid explicabo quos voluptatem sit vel
-              maxime nostrum consequatur delectus earum similique, quod
-              excepturi perspiciatis nisi! Possimus commodi, aspernatur eligendi
-              porro aut incidunt expedita blanditiis quis ducimus repellat,
-              aliquid explicabo quisquam obcaecati architecto! Quis assumenda
-              cumque nulla dolores voluptate quisquam quam.
-            </Typography>
+            <List dense={dense}>
+              {data.contentfulMaterialCard.advantages.map((adv, index) => {
+                return (
+                  <ListItem key={index}>
+                    <ListItemIcon>
+                      <EcoIcon />
+                    </ListItemIcon>
+                    {adv}
+                  </ListItem>
+                )
+              })}
+            </List>
           </Box>
           <Box m={0} p={2} borderTop={0} className={classes.boxTop}>
             <Typography variant="h3" component="h2">
               Disadvantages
             </Typography>
-            <Typography variant="body1">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Aspernatur minus quibusdam suscipit aperiam sapiente a facilis
-              eligendi possimus quo aliquid explicabo quos voluptatem sit vel
-              maxime nostrum consequatur delectus earum similique, quod
-              excepturi perspiciatis nisi! Possimus commodi, aspernatur eligendi
-              porro aut incidunt expedita blanditiis quis ducimus repellat,
-              aliquid explicabo quisquam obcaecati architecto! Quis assumenda
-              cumque nulla dolores voluptate quisquam quam.
-            </Typography>
+            {data.contentfulMaterialCard.disadvantages.map((dis, index) => {
+              return (
+                <ListItem key={index}>
+                  <ListItemIcon>
+                    <EcoIcon />
+                  </ListItemIcon>
+                  {dis}
+                </ListItem>
+              )
+            })}
           </Box>
         </Box>
       </Box>
@@ -184,70 +265,11 @@ const MaterialTemplate = () => {
         <Typography variant="h3" component="h2" style={{ width: "100%" }}>
           Commercial Applications
         </Typography>
-        <Box
-          bgcolor="background.default"
-          width="30%"
-          border={2}
-          border="primary.main"
-          p={1}
-          mb={1}
-          className={classes.fullWidth}
-        >
-          <Typography variant="h4">Liloware</Typography>
-          <Typography variant="body1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            quae eveniet quidem sit pariatur ducimus ea deleniti perferendis
-            sequi laborum.
-          </Typography>
-        </Box>
-        <Box
-          bgcolor="background.default"
-          width="30%"
-          border={2}
-          border="primary.main"
-          p={1}
-          mb={1}
-          className={classes.fullWidth}
-        >
-          <Typography variant="h4">Liloware</Typography>
-          <Typography variant="body1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            quae eveniet quidem sit pariatur ducimus ea deleniti perferendis
-            sequi laborum.
-          </Typography>
-        </Box>
-        <Box
-          bgcolor="background.default"
-          width="30%"
-          border={2}
-          border="primary.main"
-          p={1}
-          mb={1}
-          className={classes.fullWidth}
-        >
-          <Typography variant="h4">Liloware</Typography>
-          <Typography variant="body1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            quae eveniet quidem sit pariatur ducimus ea deleniti perferendis
-            sequi laborum.
-          </Typography>
-        </Box>
-        <Box
-          bgcolor="background.default"
-          width="30%"
-          border={2}
-          border="primary.main"
-          p={1}
-          mb={1}
-          className={classes.fullWidth}
-        >
-          <Typography variant="h4">Liloware</Typography>
-          <Typography variant="body1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-            quae eveniet quidem sit pariatur ducimus ea deleniti perferendis
-            sequi laborum.
-          </Typography>
-        </Box>
+
+        {renderRichText(
+          data.contentfulMaterialCard.commercialApplications,
+          options
+        )}
       </Box>
     </LayoutBackground>
   )

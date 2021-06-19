@@ -1,5 +1,7 @@
 import React from "react"
 import theme from "../../theme"
+import { useStaticQuery, graphql, Link } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import {
   Card,
@@ -7,6 +9,7 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Grid,
   Button,
   Typography,
   Box,
@@ -27,66 +30,94 @@ const useStyles = makeStyles(theme => ({
     webkitLineClamp: 3,
     webkitBoxOrient: "vertical",
   },
+  img: {
+    flexGrow: 1,
+    width: "100%",
+    height: 300,
+    objectFit: "cover",
+  },
 }))
 
 const DiscoveryMaterialCard = () => {
   const theme = useTheme()
   const classes = useStyles()
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulMaterialCard(sort: { fields: publishedDate, order: DESC }) {
+        edges {
+          node {
+            title
+            slug
+            summaryCard
+            cardImage {
+              gatsbyImageData(width: 500)
+              title
+              file {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
   return (
-    <Card
-      overflow="hidden"
-      className={classes.root}
-      elevation={0}
-      style={{
-        borderRadius: 0,
-        border: `2px solid ${theme.palette.primary.main}`,
-      }}
-    >
-      <CardActionArea p={0}>
-        <CardMedia
-          component="img"
-          alt=""
-          height="300"
-          image="https://images.unsplash.com/photo-1623412910761-8929605372ce?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-          title=""
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h3" component="h1">
-            Mycelium
-          </Typography>
-          <Box height={64} overflow="hidden">
-            <Typography
-              variant="body2"
-              color="textPrimary"
-              className={classes.clamp}
-              // component="div"
-              // width="100%"
-              // height="70px"
-              // noWrap="true"
+    <>
+      {data.allContentfulMaterialCard.edges.map(edge => {
+        const image = getImage(edge.node.cardImage.gatsbyImageData)
+        return (
+          <Grid item xs={12} sm={6} md={4}>
+            <Link
+              to={`/discover/${edge.node.slug}`}
+              style={{ textDecoration: "none" }}
+              key={edge.node.slug}
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla
-              pariatur nemo velit natus aut a autem architecto tempora fuga iure
-              expedita odit distinctio, voluptatem recusandae, voluptatibus
-              cumque ipsam error, libero minus unde culpa dolore? Voluptatibus
-              voluptate voluptatum quasi odit commodi iste architecto provident.
-              Debitis sint incidunt, ducimus non modi officia enim dignissimos,
-              ipsum, placeat eaque sit tempora sapiente ea dolores consequuntur
-              cupiditate odit. Minus, tempora maiores id quisquam voluptatum
-              quidem reiciendis voluptatibus veritatis minima ea earum tempore
-              eligendi magni tenetur est. Earum eos enim cum quia voluptas,
-              tempore nemo voluptates delectus dolorum pariatur, ullam nam
-              exercitationem adipisci optio vel assumenda?
-            </Typography>
-          </Box>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions>
-    </Card>
+              <Card
+                overflow="hidden"
+                className={classes.root}
+                elevation={3}
+                style={{
+                  borderRadius: 0,
+                  border: `2px solid ${theme.palette.primary.main}`,
+                }}
+              >
+                <CardActionArea p={0}>
+                  <GatsbyImage
+                    className={classes.img}
+                    image={image}
+                    alt={edge.node.cardImage.title}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h3" component="h1">
+                      {edge.node.title}
+                    </Typography>
+                    <Box height={64} overflow="hidden">
+                      <Typography
+                        variant="body2"
+                        color="textPrimary"
+                        className={classes.clamp}
+                        // component="div"
+                        // width="100%"
+                        // height="70px"
+                        // noWrap="true"
+                      >
+                        {edge.node.summaryCard}
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button size="small" color="primary">
+                    MORE
+                  </Button>
+                </CardActions>
+              </Card>
+            </Link>
+          </Grid>
+        )
+      })}
+    </>
   )
 }
 

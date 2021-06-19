@@ -18,9 +18,20 @@ module.exports = {
       },
     },
     "gatsby-plugin-sass",
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `dominantColor`,
+          quality: 50,
+          breakpoints: [600, 960, 1280, 1920],
+          backgroundColor: `transparent`,
+        },
+      },
+    },
 
     `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,

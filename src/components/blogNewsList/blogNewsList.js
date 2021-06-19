@@ -59,13 +59,21 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 0,
     width: 200,
     height: 200,
+    [theme.breakpoints.down("xs")]: {
+      width: 150,
+      height: 150,
+    },
   },
   img: {
     // flexGrow: 1,
     // margin: theme.spacing(2),
-    width: "100%",
-    height: "auto",
+    width: 200,
+    height: 200,
     // objectFit: "cover",
+    [theme.breakpoints.down("xs")]: {
+      width: 150,
+      height: 150,
+    },
   },
   clampCopy: {
     width: "100%",
@@ -93,12 +101,11 @@ const BlogNewsList = () => {
         edges {
           node {
             title
-            author
             slug
             summary
             publishedDate(formatString: "do MMMM, YYYY")
             previewImage {
-              gatsbyImageData
+              gatsbyImageData(width: 200)
               title
               file {
                 url
@@ -112,7 +119,7 @@ const BlogNewsList = () => {
   return (
     <Box className={classes.box}>
       {data.allContentfulBlogPost.edges.map(edge => {
-        const image = getImage(edge.node.previewImage)
+        const image = getImage(edge.node.previewImage.gatsbyImageData)
         return (
           <Link
             to={`/blog/${edge.node.slug}`}
@@ -122,7 +129,7 @@ const BlogNewsList = () => {
             <Card className={classes.root} elevation={0}>
               <div className={classes.copy}>
                 <CardContent className={classes.cardContent}>
-                  <Typography variant="h2" component="h1">
+                  <Typography variant="h3" component="h1">
                     {edge.node.title}
                   </Typography>
                   <Typography variant="h3" className={classes.date}>

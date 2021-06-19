@@ -2,7 +2,6 @@ import React from "react"
 import LayoutFooterAbs from "../components/layout/layoutFooterAbs"
 import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/styles"
-import { relativeTimeThreshold } from "moment"
 
 import BlogNewsList from "../components/blogNewsList/blogNewsList"
 import { StaticImage } from "gatsby-plugin-image"
