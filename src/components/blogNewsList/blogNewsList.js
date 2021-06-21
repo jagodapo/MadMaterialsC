@@ -23,10 +23,12 @@ const useStyles = makeStyles(theme => ({
     paddingRight: theme.spacing(3),
     display: "flex",
     flexDirection: "column",
+    marginBottom: 70,
     [theme.breakpoints.down("md")]: {
       alignItems: "center",
       maxWidth: "unset",
       paddingRight: 0,
+      marginBottom: 0,
     },
   },
   root: {
@@ -56,6 +58,9 @@ const useStyles = makeStyles(theme => ({
   //   flex: "0 1 auto",
   // },
   imgWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "stretch",
     flexGrow: 0,
     width: 200,
     height: 200,

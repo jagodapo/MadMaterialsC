@@ -10,7 +10,6 @@ import {
   Container,
 } from "@material-ui/core"
 import { Link } from "gatsby"
-import theme from "../../theme"
 import DrawerC from "../drawer/drawer"
 import Logo from "../svg/logo"
 // use SvgIcon to make Logo!

@@ -20,16 +20,29 @@ const useStyles = makeStyles(theme => ({
     },
   },
   imgWrapper: {
+    marginTop: 100,
     width: "100%",
     textAlign: "center",
+    paddingRight: theme.spacing(7),
+    width: "50%",
+    // height: 300,
+    // position: "absolute",
+    // top: 0,
+    // transform: `translateY(calc(50%-200px))`,
+    // left: 0,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    [theme.breakpoints.down("md")]: {
+      margin: "0 auto",
+    },
   },
   img: {
-    width: "100%",
-    height: "auto",
+    width: "auto",
+    height: "300",
     margin: "auto 0",
     [theme.breakpoints.down("md")]: {
-      maxWidth: 400,
-      margin: "0 auto",
+      maxWidth: 350,
     },
     [theme.breakpoints.down("sm")]: {
       marginTop: theme.spacing(2),
@@ -93,20 +106,13 @@ const BlogPage = () => {
               <BlogNewsList />
             </Box>
           </Box>
-          <Box
-            pr={7}
-            width="50%"
-            height="100%"
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-          >
+          <div className={classes.imgWrapper}>
             <StaticImage
               src={"../images/bio-based-blog.png"}
               className={classes.img}
               alt="blog"
             />
-          </Box>
+          </div>
         </div>
       )}
     </LayoutFooterAbs>

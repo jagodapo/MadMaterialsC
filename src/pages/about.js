@@ -7,25 +7,41 @@ import {
   CardActionArea,
   Box,
 } from "@material-ui/core"
-import { withStyles } from "@material-ui/core/styles"
+import { makeStyles } from "@material-ui/core/styles"
 import PaintHighlight from "../components/svg/paint-highlight"
 import Bloby from "../images/blobs.png"
+import theme from "../theme"
 
-const styles = {
-  backgroundColor: "blue",
-  color: "white",
-  borderStyle: "solid",
-  backgroundColor: "white",
-  border: "2px solid red",
-}
+const useStyles = makeStyles({
+  img: {
+    width: "100%",
+    height: "auto",
+  },
+  grid: {
+    justifyContent: "space-between",
+    margin: "0 auto",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: 600,
+    },
+  },
+  typoWrapper: {
+    width: "100%",
+    margin: "0 auto",
+    padding: theme.spacing(2),
+  },
+  header: {
+    maxWidth: 250,
+  },
+})
 
 const AboutPage = () => {
+  const classes = useStyles()
   return (
     <LayoutFooterAbs>
-      <Grid container justify="space-between">
-        <Grid item xs={12} md={6} style={{ maxWidth: 450 }}>
-          <Box m={5}>
-            <Typography variant="h1">
+      <Grid container className={classes.grid}>
+        <Grid item xs={12} md={6}>
+          <Box m={5} className={classes.typoWrapper}>
+            <Typography variant="h1" className={classes.header}>
               Welcome to the mad materials lab!
             </Typography>
             <Box margin="0 auto" position="relative" top="-20px">
@@ -44,8 +60,8 @@ const AboutPage = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <img style={{ width: "100%", height: "auto" }} src={Bloby} />
+        <Grid item xs={10} md={6}>
+          <img className={classes.img} src={Bloby} />
         </Grid>
       </Grid>
     </LayoutFooterAbs>

@@ -48,7 +48,7 @@ module.exports = {
             google: [
               {
                 family: `Poppins`,
-                variants: [`300`, `400`, `500`],
+                variants: [`300`, `400`, `500`, "700"],
               },
               {
                 family: `Crimson Text`,

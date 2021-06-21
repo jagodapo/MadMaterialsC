@@ -14,18 +14,13 @@ const useStyles = makeStyles(theme => ({
   drawerPaper: {
     background: theme.palette.primary.contrastText,
     color: theme.palette.primary.main,
-    border: "2px solid red",
     minWidth: 200,
-
-    // width: "100%",
-    // height: "100%",
-    // maxHeight: "unset",
-    // maxWidth: "unset",
   },
   buttons: {
     color: theme.palette.primary.main,
     textDecoration: "unset",
     textTransform: "uppercase",
+    fontWeight: 700,
   },
 }))
 const DrawerC = () => {

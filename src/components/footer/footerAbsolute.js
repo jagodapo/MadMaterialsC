@@ -1,27 +1,18 @@
 import React from "react"
-import { Typography, Paper } from "@material-ui/core"
+import { Typography, Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
+import FooterCopyandLogo from "../footerCopyandLogo/footerCopyandLogo"
 
 const useStyles = makeStyles(theme => ({
   container: {
-    // position: "absolute",
-    // bottom: 0,
-    // left: "50%",
-    // transform: "translateX(-50%)",
     backgroundColor: theme.palette.secondary.main,
-    minHeight: 100,
+    minHeight: 70,
     zIndex: 1234567897654,
-
+    textAlign: "center",
     position: "fixed",
     bottom: 0,
     left: 0,
     width: "100%",
-    // maxWidth: 1200,
-  },
-  copy: {
-    maxWidth: 1200,
-    margin: "0 auto",
-    padding: "16px 16px",
   },
 }))
 
@@ -29,13 +20,7 @@ const Footer = () => {
   const classes = useStyles()
   return (
     <footer className={classes.container}>
-      <Typography color="primary" className={classes.copy} align="center">
-        infomadmaterials@gmail.com | © 2020 Mad Materials all rights reserved |
-        created with the support from{" "}
-        <a href="https://fundacja.orange.pl/en" target="_blank">
-          the Orange Foundation
-        </a>
-      </Typography>
+      <FooterCopyandLogo />
     </footer>
   )
 }

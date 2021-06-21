@@ -1,6 +1,6 @@
 import React from "react"
 
-import Layout from "../components/layout/layout"
+import LayoutBackground from "../components/layout/layoutBackground"
 import {
   Container,
   Box,
@@ -36,7 +36,7 @@ const DiscoverPage = () => {
   const classes = useStyles()
 
   return (
-    <Layout>
+    <LayoutBackground>
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={4}>
@@ -72,7 +72,7 @@ const DiscoverPage = () => {
           <MaterialDiscoveryCard />
         </Grid>
       </div>
-    </Layout>
+    </LayoutBackground>
   )
 }
 
