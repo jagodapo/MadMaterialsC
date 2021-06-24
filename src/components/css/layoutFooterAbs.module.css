@@ -8,6 +8,6 @@
   max-width: 1200px;
   margin: 0 auto;
   flex-grow: 1;
-  height: calc(100vh - 74px - 100px);
+  min-height: calc(100vh - 74px - 100px);
 }
 /*# sourceMappingURL=layoutFooterAbs.module.css.map */

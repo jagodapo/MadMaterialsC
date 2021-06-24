@@ -9,8 +9,8 @@ import {
 } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import PaintHighlight from "../components/svg/paint-highlight"
-import Bloby from "../images/blobs.png"
 import theme from "../theme"
+import PatternAbout from "../components/svg/pattern-about"
 
 const useStyles = makeStyles({
   img: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     height: "auto",
   },
   grid: {
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     margin: "0 auto",
     [theme.breakpoints.down("sm")]: {
       maxWidth: 600,
@@ -39,7 +39,7 @@ const AboutPage = () => {
   return (
     <LayoutFooterAbs>
       <Grid container className={classes.grid}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4}>
           <Box m={5} className={classes.typoWrapper}>
             <Typography variant="h1" className={classes.header}>
               Welcome to the mad materials lab!
@@ -61,7 +61,7 @@ const AboutPage = () => {
           </Box>
         </Grid>
         <Grid item xs={10} md={6}>
-          <img className={classes.img} src={Bloby} />
+          <PatternAbout />
         </Grid>
       </Grid>
     </LayoutFooterAbs>

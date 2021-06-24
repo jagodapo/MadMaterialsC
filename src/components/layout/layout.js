@@ -6,8 +6,8 @@
  */
 
 import React from "react"
-// import Header from "../header/header"
-import Header2 from "../header/header"
+import Header from "../header/header"
+// import Header2 from "../header/header"
 
 import Footer from "../footer/footer"
 import { makeStyles } from "@material-ui/core/styles"
@@ -42,7 +42,7 @@ const Layout = props => {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <Header2 />
+      <Header/>
       <main className={classes.wrapper}>{props.children}</main>
       <Footer />
     </MuiThemeProvider>

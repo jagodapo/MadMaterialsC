@@ -2,41 +2,70 @@ import React from "react"
 import LayoutFooterAbs from "../components/layout/layoutFooterAbs"
 import { Box, useMediaQuery, Typography } from "@material-ui/core"
 import { makeStyles, useTheme } from "@material-ui/styles"
-
 import BlogNewsList from "../components/blogNewsList/blogNewsList"
-import { StaticImage } from "gatsby-plugin-image"
-
-const useStyles = makeStyles(theme => ({
+import PatternBlog from "../components/svg/pattern-blog"
+import theme from "../theme"
+const useStyles = makeStyles({
   root: {
     display: "static",
     position: "relative",
     height: "100%",
 
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       margin: "0 auto",
       maxWidth: 800,
       paddingRight: theme.spacing(1),
       paddingLeft: theme.spacing(1),
     },
   },
-  imgWrapper: {
-    marginTop: 100,
-    width: "100%",
-    textAlign: "center",
+
+  title: {
+    fontSize: 84,
+    lineHeight: 0.9,
+    position: "relative",
+    zIndex: 987,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 64,
+    },
+  },
+  dotWrapper: {
+    position: "relative",
+    marginTop: theme.spacing(4),
+  },
+  sectionWrapper: {
+    textAlign: "left",
     paddingRight: theme.spacing(7),
     width: "50%",
+    position: "relative",
     // height: 300,
     // position: "absolute",
     // top: 0,
     // transform: `translateY(calc(50%-200px))`,
     // left: 0,
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    [theme.breakpoints.down("md")]: {
+    // display: "flex",
+    // flexDirection: "column",
+    // alignItems: "center",
+    [theme.breakpoints.down("sm")]: {
       margin: "0 auto",
+      width: "100%",
     },
   },
+  dot: {
+    height: 200,
+    width: 200,
+    borderRadius: "50%",
+    backgroundColor: theme.palette.secondary.main,
+    position: "absolute",
+    left: 0,
+    top: "50%",
+    transform: `translateY(-50%)`,
+    zIndex: -1,
+    [theme.breakpoints.down("sm")]: {
+      height: 150,
+      width: 150,
+    },
+  },
+
   img: {
     width: "auto",
     height: "300",
@@ -58,11 +87,13 @@ const useStyles = makeStyles(theme => ({
     width: "40%",
     flexGrow: 1,
   },
-  image: {
-    width: "100%",
-    height: "auto",
-    objectFit: "cover",
-  },
+  // imgWrapper: {
+  //   height: `calc(100vh - 150px)`,
+  //   [theme.breakpoints.down("md")]: {
+  //     width: "100%",
+  //     height: "auto",
+  //   },
+  // },
   fixed: {
     position: "fixed",
     width: "50%",
@@ -76,7 +107,7 @@ const useStyles = makeStyles(theme => ({
     WebkitOverflowScrolling: "touch",
     height: "100%",
   },
-}))
+})
 
 const BlogPage = () => {
   const theme = useTheme()
@@ -88,13 +119,16 @@ const BlogPage = () => {
     <LayoutFooterAbs>
       {isMedium ? (
         <div className={classes.root}>
-          <Box className={classes.imgWrapper}>
-            <StaticImage
-              src={"../images/bio-based-blog.png"}
-              placeholder="blurred"
-              className={classes.img}
-              alt="blog"
-            />
+          <Box className={classes.sectionWrapper}>
+            <div className={classes.dotWrapper}>
+              <div className={classes.dot}></div>
+              <Typography variant="h1" className={classes.title}>
+                Bio-based
+                <br />
+                Blog
+              </Typography>
+            </div>
+            <PatternBlog />
           </Box>
 
           <BlogNewsList />
@@ -106,13 +140,17 @@ const BlogPage = () => {
               <BlogNewsList />
             </Box>
           </Box>
-          <div className={classes.imgWrapper}>
-            <StaticImage
-              src={"../images/bio-based-blog.png"}
-              className={classes.img}
-              alt="blog"
-            />
-          </div>
+          <Box className={classes.sectionWrapper}>
+            <div className={classes.dotWrapper}>
+              <div className={classes.dot}></div>
+              <Typography variant="h1" className={classes.title}>
+                Bio-based
+                <br />
+                Blog
+              </Typography>
+            </div>
+            <PatternBlog />
+          </Box>
         </div>
       )}
     </LayoutFooterAbs>
