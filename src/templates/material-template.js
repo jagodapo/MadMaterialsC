@@ -13,6 +13,10 @@ import {
   ListItemIcon,
   ListItemText,
   Avatar,
+  Card,
+  CardContent,
+  CardActions,
+  Button,
 } from "@material-ui/core"
 import EcoIcon from "@material-ui/icons/Eco"
 import theme from "../theme"
@@ -70,6 +74,14 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none",
     display: "block",
     fontSize: 16,
+    paddingBottom: theme.spacing(1),
+  },
+  commercialApplications: {
+    width: "100%",
+    paddingBottom: theme.spacing(2),
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(1),
+    color: theme.palette.primary.contrastText,
   },
 }))
 const imgStyle = {}
@@ -114,17 +126,32 @@ const MaterialTemplate = ({ data }) => {
     },
     renderNode: {
       [BLOCKS.PARAGRAPH]: (node, children) => (
-        <Box
-          bgcolor="background.default"
-          width="30%"
-          border={2}
-          border="primary.main"
-          p={1}
-          mb={1}
-          className={classes.fullWidth}
-        >
-          {children}
-        </Box>
+        <Grid item xs={12} md={4}>
+          <Card
+            border={2}
+            variant="outlined"
+            style={{ height: "100%", display: "flex", flexDirection: "column" }}
+          >
+            <CardContent style={{ flexGrow: 1 }}>
+              <Typography variant="body1">{children}</Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Learn More</Button>
+            </CardActions>
+          </Card>
+        </Grid>
+
+        // <Box
+        //   bgcolor="background.default"
+        //   width="30%"
+        //   border={2}
+        //   border="primary.main"
+        //   p={1}
+        //   mb={1}
+        //   className={classes.fullWidth}
+        // >
+        //   {children}
+        // </Box>
       ),
     },
   }
@@ -252,24 +279,32 @@ const MaterialTemplate = ({ data }) => {
         </Box>
       </Box>
       <Box
-        p={1}
+        pt={1}
         mt={2}
+        pb={2}
+        pr={1}
+        pl={1}
         display="flex"
         flexDirection="row"
         flexWrap="wrap"
-        bgcolor="secondary.main"
+        bgcolor="primary.main"
         height="200"
         width="100%"
         justifyContent="space-around"
       >
-        <Typography variant="h3" component="h2" style={{ width: "100%" }}>
+        <Typography
+          variant="h3"
+          component="h2"
+          className={classes.commercialApplications}
+        >
           Commercial Applications
         </Typography>
-
-        {renderRichText(
-          data.contentfulMaterialCard.commercialApplications,
-          options
-        )}
+        <Grid container spacing={3}>
+          {renderRichText(
+            data.contentfulMaterialCard.commercialApplications,
+            options
+          )}
+        </Grid>
       </Box>
     </LayoutBackground>
   )

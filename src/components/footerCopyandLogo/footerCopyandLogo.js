@@ -29,6 +29,9 @@ const useStyles = makeStyles(theme => ({
     verticalAlign: "middle",
     display: "inline-block",
   },
+  link: {
+    color: theme.palette.primary.main,
+  },
 }))
 
 const FooterCopyandLogo = () => {
@@ -38,18 +41,24 @@ const FooterCopyandLogo = () => {
       <Typography color="primary" className={classes.copy} align="center">
         <span>
           infomadmaterials@gmail.com | © 2020 Mad Materials all rights reserved
-          | created with the support from
-          <a href="https://fundacja.orange.pl/en" target="_blank">
+          | created with the support from <span />
+          <a
+            href="https://fundacja.orange.pl/en"
+            className={classes.link}
+            target="_blank"
+          >
             the Orange Foundation
           </a>
         </span>
       </Typography>
       <div className={classes.logoWrapper}>
-        <img
-          src={FOLogo}
-          className={classes.logo}
-          alt="The Orange Foundation Logo"
-        />
+        <a href="https://fundacja.orange.pl/en" target="_blank">
+          <img
+            src={FOLogo}
+            className={classes.logo}
+            alt="The Orange Foundation Logo"
+          />
+        </a>
       </div>
     </Box>
   )

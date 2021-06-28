@@ -6,6 +6,8 @@ import theme from "../theme"
 import { StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import PatternHomePage from "../components/svg/pattern-home-page"
+import PatternHomePageDesktop from "../components/svg/pattern-home-page-desktop"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 // import Seo from "../components/seo"
 
@@ -18,13 +20,16 @@ const useStyles = makeStyles({
     },
   },
   gridContainer: {
+    minHeight: `calc(100vh - 150px)`,
+    alignItems: "flex-end",
+    justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
       // overflow: "hidden",
       flexDirection: "column-reverse",
     },
   },
   imgWrapper: {
-    height: `calc(100vh - 150px)`,
+    height: `calc(90vh - 150px)`,
     [theme.breakpoints.down("md")]: {
       width: "100%",
       height: "auto",
@@ -92,16 +97,25 @@ const useStyles = makeStyles({
 
 const IndexPage = () => {
   const classes = useStyles()
+  const isMedium = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
     <Layout>
       <div className={classes.root}>
         <Grid container spacing={1} className={classes.gridContainer}>
-          <Grid item xs={12} md={7} className={classes.imgWrapper}>
-            <PatternHomePage />
+          <Grid item xs={12} md={8} className={classes.imgWrapper}>
+            {isMedium ? (
+              <>
+                <PatternHomePage />
+              </>
+            ) : (
+              <>
+                <PatternHomePageDesktop />
+              </>
+            )}
           </Grid>
 
-          <Grid item className={classes.headerWrapper} item xs={12} md={5}>
+          <Grid item className={classes.headerWrapper} item xs={12} md={4}>
             <div className={classes.dot}></div>
             <Typography variant="h1" className={classes.title}>
               Bio-
@@ -119,7 +133,7 @@ const IndexPage = () => {
           </Grid>
         </Grid>
         <Grid container spacing={1} className={classes.container2}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} sm={8} md={4}>
             <Typography variant="h1">Materials for a greener future</Typography>
             <Typography variant="body1" className={classes.description}>
               Get to know the fascinating world of innovative material solutions
@@ -127,7 +141,7 @@ const IndexPage = () => {
               why mushrooms are superheroes and what can be done from waste
               after wine production.
             </Typography>
-            <Link to="/about" style={{ textDecoration: "none" }}>
+            <Link to="/discover" style={{ textDecoration: "none" }}>
               <Button
                 variant="contained"
                 color="secondary"

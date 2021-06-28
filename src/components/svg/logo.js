@@ -1,6 +1,7 @@
 import React from "react"
 import SvgIcon from "@material-ui/core/SvgIcon"
 import { makeStyles } from "@material-ui/core/styles"
+import { Link } from "gatsby"
 
 const useStyles = makeStyles(theme => ({
   svg: {
@@ -19,7 +20,7 @@ const Logo = props => {
   const classes = useStyles()
 
   return (
-    <>
+    <Link to="/">
       <SvgIcon viewBox="0 0 280 30" className={classes.svg}>
         <path
           xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +28,7 @@ const Logo = props => {
           fill="#325743"
         />
       </SvgIcon>
-    </>
+    </Link>
   )
 }
 
