@@ -1,7 +1,7 @@
 import React from "react"
 import { Box, Typography } from "@material-ui/core"
 import { graphql } from "gatsby"
-
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { makeStyles, useTheme } from "@material-ui/styles"
 
 import BlogLayout from "../components/blogLayout/blogLayout"
@@ -38,6 +38,13 @@ export const query = graphql`
       title
       author
       publishedDate(formatString: "MMMM Do, YYYY")
+      backgroundImage {
+        gatsbyImageData(layout: FULL_WIDTH, aspectRatio: 3.2, placeholder: BLURRED)
+        title
+        file {
+          url
+        }
+      }
       body {
         raw
         references {
@@ -60,12 +67,17 @@ export const query = graphql`
 const BlogPostTemplate = ({ data }) => {
   const classes = useStyles()
   const theme = useTheme()
-
+  const bgImage = getImage(data.contentfulBlogPost.backgroundImage.gatsbyImageData)
   const options = {
     renderNode: {
       "embedded-asset-block": node => {
         return (
-          <img src={node.data.target.fixed.src} alt={node.data.target.title} />
+          <img
+            src={node.data.target.fixed.src}
+            alt={node.data.target.title}
+            width="100%"
+            height="auto"
+          />
         )
       },
     },
@@ -73,11 +85,12 @@ const BlogPostTemplate = ({ data }) => {
 
   return (
     <BlogLayout>
-      <img
-        className={classes.img}
-        src="https://images.unsplash.com/photo-1623249604976-94248ca095c7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
-        alt=""
+      <GatsbyImage
+      loading="eager"
+        image={bgImage}
+        alt={data.contentfulBlogPost.backgroundImage.title}
       />
+
       <Typography variant="h1" className={classes.padding}>
         {data.contentfulBlogPost.title}
       </Typography>

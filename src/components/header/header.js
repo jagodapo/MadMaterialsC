@@ -12,10 +12,7 @@ import {
 import { Link } from "gatsby"
 import DrawerC from "../drawer/drawer"
 import Logo from "../svg/logo"
-// use SvgIcon to make Logo!
-// przerob z tego!!!! uzyj DRAWER!!! i tego:
-// https://www.youtube.com/watch?v=6JSkAfNvY4M
-// https://codesandbox.io/s/material-ui-navbar-responsive-lf30l?file=/src/App.js:442-459
+
 const useStyles = makeStyles(theme => ({
   appbar: {
     boxShadow: "0px 0px 0px 0px",
@@ -40,7 +37,6 @@ const useStyles = makeStyles(theme => ({
     height: 54,
     [theme.breakpoints.up("sm")]: {
       height: 74,
-      position: "-webkit-sticky",
       position: "sticky",
       zIndex: 1078,
       top: 0,

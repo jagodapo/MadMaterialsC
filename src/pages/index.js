@@ -9,8 +9,6 @@ import PatternHomePage from "../components/svg/pattern-home-page"
 import PatternHomePageDesktop from "../components/svg/pattern-home-page-desktop"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 
-// import Seo from "../components/seo"
-
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
@@ -36,7 +34,6 @@ const useStyles = makeStyles({
     },
   },
   headerWrapper: {
-    textAlign: "right",
     position: "relative",
     alignSelf: "flex-end",
     textAlign: "right",
@@ -154,6 +151,8 @@ const IndexPage = () => {
           </Grid>
           <Grid item md={4}>
             <StaticImage
+            loading="lazy"
+            placeholder="blurred"
               src={"../images/glove.png"}
               className={classes.img}
               alt="biomaterial"

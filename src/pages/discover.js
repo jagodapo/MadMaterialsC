@@ -1,15 +1,7 @@
 import React from "react"
 
 import LayoutBackground from "../components/layout/layoutBackground"
-import {
-  Container,
-  Box,
-  Grid,
-  Paper,
-  Typography,
-  Card,
-  CardContent,
-} from "@material-ui/core"
+import { Grid, Typography, Card, CardContent } from "@material-ui/core"
 import MaterialDiscoveryCard from "../components/discoveryMaterialCard/discoveryMaterialCard"
 import theme from "../theme"
 import { makeStyles } from "@material-ui/styles"

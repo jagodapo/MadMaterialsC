@@ -1,7 +1,6 @@
 import React from "react"
 import SvgIcon from "@material-ui/core/SvgIcon"
 import { makeStyles } from "@material-ui/core/styles"
-import theme from "../../theme"
 
 const useStyles = makeStyles({
   svg: {

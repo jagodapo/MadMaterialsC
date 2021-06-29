@@ -1,12 +1,6 @@
 import React from "react"
 import LayoutFooterAbs from "../components/layout/layoutFooterAbs"
-import {
-  Grid,
-  Typography,
-  CardMedia,
-  CardActionArea,
-  Box,
-} from "@material-ui/core"
+import { Grid, Typography, Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import PaintHighlight from "../components/svg/paint-highlight"
 import theme from "../theme"

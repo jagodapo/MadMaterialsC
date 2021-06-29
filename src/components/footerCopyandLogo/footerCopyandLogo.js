@@ -46,13 +46,18 @@ const FooterCopyandLogo = () => {
             href="https://fundacja.orange.pl/en"
             className={classes.link}
             target="_blank"
+            rel="noopener noreferrer"
           >
             the Orange Foundation
           </a>
         </span>
       </Typography>
       <div className={classes.logoWrapper}>
-        <a href="https://fundacja.orange.pl/en" target="_blank">
+        <a
+          href="https://fundacja.orange.pl/en"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
             src={FOLogo}
             className={classes.logo}

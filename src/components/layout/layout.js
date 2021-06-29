@@ -1,18 +1,9 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
 import React from "react"
 import Header from "../header/header"
-// import Header2 from "../header/header"
-
 import Footer from "../footer/footer"
 import { makeStyles } from "@material-ui/core/styles"
 import { MuiThemeProvider } from "@material-ui/core/styles"
-import { CssBaseline, Container } from "@material-ui/core"
+import { CssBaseline } from "@material-ui/core"
 import theme from "../../theme"
 
 const useStyles = makeStyles(theme => ({
@@ -42,7 +33,7 @@ const Layout = props => {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <Header/>
+      <Header />
       <main className={classes.wrapper}>{props.children}</main>
       <Footer />
     </MuiThemeProvider>

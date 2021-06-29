@@ -1,25 +1,20 @@
 import React from "react"
 import LayoutBackground from "../components/layout/layoutBackground"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { BLOCKS, MARKS } from "@contentful/rich-text-types"
 import {
   Box,
   Grid,
-  Paper,
   Typography,
   List,
   ListItem,
-  ListItemAvatar,
   ListItemIcon,
-  ListItemText,
-  Avatar,
   Card,
   CardContent,
   CardActions,
   Button,
 } from "@material-ui/core"
 import EcoIcon from "@material-ui/icons/Eco"
-import theme from "../theme"
 import PaintHighlight from "../components/svg/paint-highlight"
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -83,8 +78,10 @@ const useStyles = makeStyles(theme => ({
     paddingTop: theme.spacing(1),
     color: theme.palette.primary.contrastText,
   },
+  bold: {
+    fontWeight: 500,
+  }
 }))
-const imgStyle = {}
 
 export const query = graphql`
   query($slug: String!) {
@@ -92,6 +89,7 @@ export const query = graphql`
       slug
       title
       tags
+      imageSource
       about {
         childMarkdownRemark {
           rawMarkdownBody
@@ -155,11 +153,12 @@ const MaterialTemplate = ({ data }) => {
       ),
     },
   }
+  // const imageSource => () {
+  //   if (data.contentfulMaterialCard.imageSource != false) {
+  //       return ()    
+  //   }
+  // }
   const classes = useStyles()
-  const [dense, setDense] = React.useState(true)
-  const {
-    bodyRichText,
-  } = data.contentfulMaterialCard.commercialApplications.raw
   const image = getImage(
     data.contentfulMaterialCard.backgroundImage.gatsbyImageData
   )
@@ -237,6 +236,19 @@ const MaterialTemplate = ({ data }) => {
             data.contentfulMaterialCard.about.childMarkdownRemark
               .rawMarkdownBody
           }
+          {(() => {
+            if (data.contentfulMaterialCard.imageSource) {
+              return (
+                
+                <Typography variant="body"> <p><span className={classes.bold}>***image source: </span>
+            {data.contentfulMaterialCard.imageSource}
+            </p>
+            </Typography>
+              )
+            } 
+          })()}
+      
+
         </Box>
         <Box
           display="flex"
@@ -248,7 +260,7 @@ const MaterialTemplate = ({ data }) => {
             <Typography variant="h3" component="h2">
               Advantages
             </Typography>
-            <List dense={dense}>
+            <List dense={true}>
               {data.contentfulMaterialCard.advantages.map((adv, index) => {
                 return (
                   <ListItem key={index}>

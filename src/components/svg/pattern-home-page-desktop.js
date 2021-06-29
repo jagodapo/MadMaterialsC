@@ -203,7 +203,7 @@ const PatternHomePageDesktop = props => {
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        <Link to="about">
+        <Link to="/about">
           <g id="cell 2" className={patternStyles.group}>
             <path
               id="border_2"
@@ -354,7 +354,6 @@ const PatternHomePageDesktop = props => {
             </g>
             <path
               id="border_2"
-              ath
               className={patternStyles.cell}
               d="M780.508 599.469L737.724 440.124C735.998 433.694 731.957 428.128 726.377 424.496L634.864 364.929C624.208 357.994 610.157 359.431 601.127 368.382L472.541 495.837C470.681 497.681 469.099 499.785 467.845 502.084L404.438 618.329C397.578 630.907 401.736 646.653 413.912 654.204L496.792 705.603C501.066 708.253 505.994 709.657 511.022 709.657H669.572C676.231 709.657 682.655 707.197 687.61 702.748L772.469 626.561C780.038 619.766 783.145 609.293 780.508 599.469Z"
               stroke="#40584A"
@@ -366,7 +365,7 @@ const PatternHomePageDesktop = props => {
             <text
               x="530"
               y="580"
-              font-size="64"
+              fontSize="64"
               fill="#F5F1E6"
               className={patternStyles.copy}
             >
@@ -534,7 +533,7 @@ const PatternHomePageDesktop = props => {
             <text
               x="50"
               y="180"
-              font-size="64"
+              fontSize="64"
               fill="#F5F1E6"
               className={patternStyles.copy}
             >
@@ -858,7 +857,7 @@ const PatternHomePageDesktop = props => {
             <text
               x="400"
               y="270"
-              font-size="64"
+              fontSize="64"
               fill="#F5F1E6"
               className={patternStyles.copy}
             >

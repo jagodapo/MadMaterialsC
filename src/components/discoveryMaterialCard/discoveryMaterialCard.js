@@ -1,5 +1,4 @@
 import React from "react"
-import theme from "../../theme"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -8,7 +7,6 @@ import {
   CardActionArea,
   CardActions,
   CardContent,
-  CardMedia,
   Grid,
   Button,
   Typography,
@@ -50,7 +48,7 @@ const DiscoveryMaterialCard = () => {
             slug
             summaryCard
             cardImage {
-              gatsbyImageData(width: 500)
+              gatsbyImageData(width: 500, placeholder: BLURRED)
               title
               file {
                 url
@@ -84,6 +82,7 @@ const DiscoveryMaterialCard = () => {
               >
                 <CardActionArea p={0}>
                   <GatsbyImage
+                  loading="eager"
                     className={classes.img}
                     image={image}
                     alt={edge.node.cardImage.title}
@@ -97,10 +96,6 @@ const DiscoveryMaterialCard = () => {
                         variant="body2"
                         color="textPrimary"
                         className={classes.clamp}
-                        // component="div"
-                        // width="100%"
-                        // height="70px"
-                        // noWrap="true"
                       >
                         {edge.node.summaryCard}
                       </Typography>

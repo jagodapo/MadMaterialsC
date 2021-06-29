@@ -2,18 +2,8 @@ import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Box,
-  CardActionArea,
-  CardActions,
-  Button,
-} from "@material-ui/core"
+import { Card, CardContent, Typography, Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/styles"
-// import BlogPostSummaryCard from "../../components/blogPostSummaryCard/blogPostSummaryCard"
 
 const useStyles = makeStyles(theme => ({
   box: {
@@ -110,7 +100,7 @@ const BlogNewsList = () => {
             summary
             publishedDate(formatString: "do MMMM, YYYY")
             previewImage {
-              gatsbyImageData(width: 200)
+              gatsbyImageData(width: 200, placeholder: BLURRED)
               title
               file {
                 url
@@ -149,6 +139,7 @@ const BlogNewsList = () => {
               </div>
               <div className={classes.imgWrapper}>
                 <GatsbyImage
+                loading="eager"
                   className={classes.img}
                   image={image}
                   alt={edge.node.previewImage.title}
