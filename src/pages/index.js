@@ -1,6 +1,7 @@
 import * as React from "react"
-import { Grid, Typography, Button } from "@material-ui/core"
+import { Grid, Typography, Button, Fade } from "@material-ui/core"
 import Layout from "../components/layout/layout"
+import Head from "../components/head/head"
 import { makeStyles } from "@material-ui/core/styles"
 import theme from "../theme"
 import { StaticImage } from "gatsby-plugin-image"
@@ -98,20 +99,24 @@ const IndexPage = () => {
 
   return (
     <Layout>
+    <Head title="Home"/>
       <div className={classes.root}>
         <Grid container spacing={1} className={classes.gridContainer}>
           <Grid item xs={12} md={8} className={classes.imgWrapper}>
             {isMedium ? (
-              <>
+              <> <Fade>
                 <PatternHomePage />
+                </Fade>
               </>
             ) : (
               <>
+              <Fade>
                 <PatternHomePageDesktop />
+                </Fade>
               </>
             )}
           </Grid>
-
+       
           <Grid item className={classes.headerWrapper} item xs={12} md={4}>
             <div className={classes.dot}></div>
             <Typography variant="h1" className={classes.title}>
@@ -128,6 +133,7 @@ const IndexPage = () => {
               biofabrication
             </Typography>
           </Grid>
+          
         </Grid>
         <Grid container spacing={1} className={classes.container2}>
           <Grid item xs={12} sm={8} md={4}>

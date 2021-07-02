@@ -5,6 +5,8 @@ import { makeStyles } from "@material-ui/core/styles"
 import { MuiThemeProvider } from "@material-ui/core/styles"
 import { CssBaseline } from "@material-ui/core"
 import theme from "../../theme"
+import * as layoutStyles from "./layoutFooterAbs.module.scss"
+
 
 const useStyles = makeStyles(theme => ({
   div: {
@@ -34,7 +36,7 @@ const Layout = props => {
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
-      <main className={classes.wrapper}>{props.children}</main>
+      <main className={layoutStyles.wrapper}>{props.children}</main>
       <Footer />
     </MuiThemeProvider>
   )

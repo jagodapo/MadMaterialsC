@@ -5,6 +5,7 @@ import { makeStyles, useTheme } from "@material-ui/styles"
 import BlogNewsList from "../components/blogNewsList/blogNewsList"
 import PatternBlog from "../components/svg/pattern-blog"
 import theme from "../theme"
+import Head from "../components/head/head"
 const useStyles = makeStyles({
   root: {
     display: "static",
@@ -117,6 +118,7 @@ const BlogPage = () => {
 
   return (
     <LayoutFooterAbs>
+    <Head title="Blog" />
       {isMedium ? (
         <div className={classes.root}>
           <Box className={classes.sectionWrapper}>

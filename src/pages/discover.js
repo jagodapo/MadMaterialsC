@@ -6,6 +6,7 @@ import MaterialDiscoveryCard from "../components/discoveryMaterialCard/discovery
 import theme from "../theme"
 import { makeStyles } from "@material-ui/styles"
 import PaintDark from "../components/svg/paint-dark"
+import Head from "../components/head/head"
 
 const useStyles = makeStyles(theme => ({
   paint: {
@@ -29,6 +30,7 @@ const DiscoverPage = () => {
 
   return (
     <LayoutBackground>
+    <Head title="Discover" />
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={4}>

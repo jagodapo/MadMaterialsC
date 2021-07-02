@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles"
 import PaintHighlight from "../components/svg/paint-highlight"
 import theme from "../theme"
 import PatternAbout from "../components/svg/pattern-about"
+import Head from "../components/head/head"
 
 const useStyles = makeStyles({
   img: {
@@ -32,6 +33,7 @@ const AboutPage = () => {
   const classes = useStyles()
   return (
     <LayoutFooterAbs>
+    <Head title="About" />
       <Grid container className={classes.grid}>
         <Grid item xs={12} md={4}>
           <Box m={5} className={classes.typoWrapper}>

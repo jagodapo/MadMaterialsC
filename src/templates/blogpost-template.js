@@ -6,6 +6,7 @@ import { makeStyles, useTheme } from "@material-ui/styles"
 
 import BlogLayout from "../components/blogLayout/blogLayout"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
+import Head from "../components/head/head"
 
 const useStyles = makeStyles(theme => ({
   img: {
@@ -85,6 +86,7 @@ const BlogPostTemplate = ({ data }) => {
 
   return (
     <BlogLayout>
+    <Head title={data.contentfulBlogPost.title}/>
       <GatsbyImage
       loading="eager"
         image={bgImage}

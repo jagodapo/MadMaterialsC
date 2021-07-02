@@ -8,15 +8,7 @@ import { CssBaseline } from "@material-ui/core"
 import theme from "../../theme"
 
 const useStyles = makeStyles(theme => ({
-  div: {
-    // added to move footer to the bottom in about
-    // position: "relative",
-    // minHeight: "100vh",
-    // display: "block",
-    // overflow: "auto",
-    // display: "flex",
-    // flexDirection: "column"
-  },
+
   wrapper: {
     alignSelf: "center",
     maxWidth: 800,

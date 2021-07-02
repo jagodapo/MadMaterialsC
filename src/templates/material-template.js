@@ -19,6 +19,7 @@ import PaintHighlight from "../components/svg/paint-highlight"
 import { makeStyles, useTheme } from "@material-ui/styles"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
+import Head from "../components/head/head"
 
 const useStyles = makeStyles(theme => ({
   position: {
@@ -165,6 +166,7 @@ const MaterialTemplate = ({ data }) => {
 
   return (
     <LayoutBackground>
+    <Head title={data.contentfulMaterialCard.title} />
       <Typography variant="h1" align="center">
         {data.contentfulMaterialCard.title}
       </Typography>
