@@ -7,6 +7,8 @@ import { makeStyles, useTheme } from "@material-ui/styles"
 import BlogLayout from "../components/blogLayout/blogLayout"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import Head from "../components/head/head"
+import PageTransition from 'gatsby-plugin-page-transitions'
+
 
 const useStyles = makeStyles(theme => ({
   img: {
@@ -85,6 +87,7 @@ const BlogPostTemplate = ({ data }) => {
   }
 
   return (
+    <PageTransition>
     <BlogLayout>
     <Head title={data.contentfulBlogPost.title}/>
       <GatsbyImage
@@ -106,6 +109,7 @@ const BlogPostTemplate = ({ data }) => {
         <div>{renderRichText(data.contentfulBlogPost.body, options)}</div>
       </Box>
     </BlogLayout>
+    </PageTransition>
   )
 }
 

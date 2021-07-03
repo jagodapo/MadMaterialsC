@@ -9,6 +9,8 @@ import { Link } from "gatsby"
 import PatternHomePage from "../components/svg/pattern-home-page"
 import PatternHomePageDesktop from "../components/svg/pattern-home-page-desktop"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
+import PageTransition from 'gatsby-plugin-page-transitions'
+import star from "../images/star.svg"
 
 const useStyles = makeStyles({
   root: {
@@ -91,6 +93,40 @@ const useStyles = makeStyles({
       marginBottom: theme.spacing(5),
     },
   },
+  backgroundImage: {
+    position: "relative",
+    backgroundImage: `url(${star})`,
+    backgroundPosition: 'center',
+    backgroundSize: "cover",
+    minHeight: 700,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(5),
+
+
+
+  },
+  earthWrapper: {
+    animation: `$rotation 7000ms ${theme.transitions.easing.easeInOut} infinite`, 
+    width:500,
+    height:500,
+    minHeight: 200,
+    margin:"auto",
+    [theme.breakpoints.down("md")]: {
+      width:"90%",
+      height: "unset"
+    },
+  },
+  '@keyframes rotation': {
+    '0%': {
+      transform: `rotate(0deg)`,
+    },
+    '100%': {
+      transform: `rotate(360deg)`,
+    }
+  }
 })
 
 const IndexPage = () => {
@@ -98,6 +134,8 @@ const IndexPage = () => {
   const isMedium = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
+    <PageTransition>
+
     <Layout>
     <Head title="Home"/>
       <div className={classes.root}>
@@ -136,6 +174,25 @@ const IndexPage = () => {
           
         </Grid>
         <Grid container spacing={1} className={classes.container2}>
+        <Grid item xs={12} className={classes.backgroundImage}>
+        <div className={classes.earthWrapper}>
+          <StaticImage
+          aspectRatio={1/ 1}
+          placeholder="blurred"
+            src={"../images/earth.png"}
+            className={classes.img}
+            alt="bioplastic"
+            layout="constrained"
+            width={500}
+            height={500}
+          
+          
+          />
+        </div>
+
+        
+        </Grid>
+
           <Grid item xs={12} sm={8} md={4}>
             <Typography variant="h1">Materials for a greener future</Typography>
             <Typography variant="body1" className={classes.description}>
@@ -155,6 +212,7 @@ const IndexPage = () => {
               </Button>
             </Link>
           </Grid>
+    
           <Grid item md={4}>
             <StaticImage
             loading="lazy"
@@ -167,6 +225,8 @@ const IndexPage = () => {
         </Grid>
       </div>
     </Layout>
+    </PageTransition>
+
   )
 }
 

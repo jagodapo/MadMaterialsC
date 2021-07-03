@@ -9,7 +9,15 @@ module.exports = {
     author: `Jagoda Podrucka`,
   },
   plugins: [
+    
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: 'gatsby-plugin-page-transitions',
+      options: {
+        transitionTime: 500
+      }
+    },
+
     {
       resolve: "gatsby-source-contentful",
       options: {

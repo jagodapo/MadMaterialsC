@@ -20,6 +20,8 @@ import { makeStyles, useTheme } from "@material-ui/styles"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { renderRichText } from "gatsby-source-contentful/rich-text"
 import Head from "../components/head/head"
+import PageTransition from 'gatsby-plugin-page-transitions'
+
 
 const useStyles = makeStyles(theme => ({
   position: {
@@ -165,6 +167,7 @@ const MaterialTemplate = ({ data }) => {
   )
 
   return (
+    <PageTransition>
     <LayoutBackground>
     <Head title={data.contentfulMaterialCard.title} />
       <Typography variant="h1" align="center">
@@ -321,6 +324,7 @@ const MaterialTemplate = ({ data }) => {
         </Grid>
       </Box>
     </LayoutBackground>
+    </PageTransition>
   )
 }
 

@@ -5,8 +5,8 @@ import theme from "../../theme"
 
 const useStyles = makeStyles({
   svg: {
-    width: "auto",
-    height: "100%",
+    width: "100%",
+    height: "auto",
     [theme.breakpoints.down("sm")]: {
       transform: `scaleX(-1)`,
       overflow: "hidden",

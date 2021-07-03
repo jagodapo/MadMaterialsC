@@ -1,20 +1,23 @@
 import React from "react"
-import LayoutFooterAbs from "../components/layout/layoutFooterAbs"
+import Layout from "../components/layout/layout"
 import { Grid, Typography, Box } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import PaintHighlight from "../components/svg/paint-highlight"
 import theme from "../theme"
 import PatternAbout from "../components/svg/pattern-about"
 import Head from "../components/head/head"
-
+import MMForm from "../components/form/form"
+import PageTransition from 'gatsby-plugin-page-transitions'
 const useStyles = makeStyles({
   img: {
     width: "100%",
     height: "auto",
   },
   grid: {
+    height: "100%",
+    alignItems: "center",
     justifyContent: "space-around",
-    margin: "0 auto",
+    margin: "auto",
     [theme.breakpoints.down("sm")]: {
       maxWidth: 600,
     },
@@ -24,21 +27,24 @@ const useStyles = makeStyles({
     margin: "0 auto",
     padding: theme.spacing(2),
   },
-  header: {
-    maxWidth: 250,
-  },
+  link: {
+    color: theme.palette.primary.main,
+  }
+
 })
 
 const AboutPage = () => {
   const classes = useStyles()
   return (
-    <LayoutFooterAbs>
+    <PageTransition>
+
+    <Layout>
     <Head title="About" />
       <Grid container className={classes.grid}>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={5}>
           <Box m={5} className={classes.typoWrapper}>
             <Typography variant="h1" className={classes.header}>
-              Welcome to the mad materials lab!
+             Mad Materials Lab
             </Typography>
             <Box margin="0 auto" position="relative" top="-20px">
               <PaintHighlight />
@@ -50,17 +56,25 @@ const AboutPage = () => {
               for material innovation and hopefully - inspire others to explore
               this field. This educational project is an invitation for creators
               and curious minds to dive into the world of material innovation
-              and bio-fabrication. The project was developed with the support
-              from the Orange Foundation If you have any questions, don't
+              and bio-fabrication. The project was developed with the support from 
+               <span> <a href="https://fundacja.orange.pl/" target="_blank " className={classes.link}>  the Orange Foundation. </a> </span> If you have any questions, don't
               hestitate to get in touch!
             </Typography>
+           
+            <MMForm/>
+            
           </Box>
+          
         </Grid>
-        <Grid item xs={10} md={6}>
-          <PatternAbout />
+        <Grid item xs={10} md={5}>
+        <PatternAbout/>
+     
+          
         </Grid>
       </Grid>
-    </LayoutFooterAbs>
+    </Layout>
+    </PageTransition>
+
   )
 }
 

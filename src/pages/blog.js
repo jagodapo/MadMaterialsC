@@ -6,6 +6,7 @@ import BlogNewsList from "../components/blogNewsList/blogNewsList"
 import PatternBlog from "../components/svg/pattern-blog"
 import theme from "../theme"
 import Head from "../components/head/head"
+import PageTransition from 'gatsby-plugin-page-transitions'
 const useStyles = makeStyles({
   root: {
     display: "static",
@@ -117,6 +118,8 @@ const BlogPage = () => {
   const isMedium = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
+    <PageTransition>
+
     <LayoutFooterAbs>
     <Head title="Blog" />
       {isMedium ? (
@@ -156,6 +159,8 @@ const BlogPage = () => {
         </div>
       )}
     </LayoutFooterAbs>
+    </PageTransition>
+
   )
 }
 
