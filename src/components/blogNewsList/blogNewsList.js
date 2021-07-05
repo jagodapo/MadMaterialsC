@@ -31,11 +31,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 0,
   },
   cardContent: {
+    padding: 0,
     [theme.breakpoints.down("sm")]: {
-      paddingTop: 0,
       paddingRight: theme.spacing(2),
-      paddingLeft: 0,
-      paddingBottom: 0,
     },
   },
   copy: {
@@ -44,9 +42,7 @@ const useStyles = makeStyles(theme => ({
     width: "60%",
     flexGrow: 1,
   },
-  // content: {
-  //   flex: "0 1 auto",
-  // },
+
   imgWrapper: {
     display: "flex",
     flexDirection: "column",

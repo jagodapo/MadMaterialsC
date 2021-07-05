@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     position: "relative",
     height: "100%",
 
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down("md")]: {
       margin: "0 auto",
       maxWidth: 800,
       paddingRight: theme.spacing(1),

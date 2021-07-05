@@ -54,7 +54,7 @@ const DiscoverPage = () => {
                   component="div"
                 >
                   Discover
-                  <PaintDark></PaintDark>
+                  <PaintDark/>
                 </Typography>
                 <Typography variant="body1">
                   Explore ecological resources and materials for your next

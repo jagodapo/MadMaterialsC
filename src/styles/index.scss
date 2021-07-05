@@ -2,12 +2,18 @@
 
 $header: 74px;
 $footer: 70px;
+$dark: #325743;
 
 // .wrapper {
 //   margin-top: $header;
 // }
 
 .paper-flat {
-  border: 2px solid #325743;
+  border: 2px solid $dark;
   border-radius: none;
+}
+
+
+a {
+  color: $dark  !important; 
 }

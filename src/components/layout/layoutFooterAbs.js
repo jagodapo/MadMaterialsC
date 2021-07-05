@@ -15,6 +15,7 @@ import { MuiThemeProvider } from "@material-ui/core/styles"
 import { CssBaseline, useMediaQuery } from "@material-ui/core"
 import theme from "../../theme"
 
+
 const LayoutFooterAbs = props => {
   const isMedium = useMediaQuery(theme.breakpoints.down("md"))
 
