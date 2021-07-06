@@ -1,6 +1,5 @@
 import * as React from "react"
 import {Link} from 'gatsby'
-import PageTransition from 'gatsby-plugin-page-transitions'
 import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
 import {Typography} from "@material-ui/core"

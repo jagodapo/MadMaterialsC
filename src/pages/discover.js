@@ -7,7 +7,6 @@ import theme from "../theme"
 import { makeStyles } from "@material-ui/styles"
 import PaintDark from "../components/svg/paint-dark"
 import Head from "../components/head/head"
-import PageTransition from 'gatsby-plugin-page-transitions'
 
 const useStyles = makeStyles(theme => ({
   paint: {
@@ -30,7 +29,6 @@ const DiscoverPage = () => {
   const classes = useStyles()
 
   return (
-    <PageTransition>
 
     <LayoutBackground>
     <Head title="Discover" />
@@ -70,7 +68,6 @@ const DiscoverPage = () => {
         </Grid>
       </div>
     </LayoutBackground>
-    </PageTransition>
 
   )
 }

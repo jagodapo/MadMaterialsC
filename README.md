@@ -12,7 +12,8 @@ I’ve created a website about innovative bio-based materials. This was my first
 ### Deployment
 Deployed with Netlify
 ### Features I'd like to add
-Improve material-template to make it more visually appealing, once it is possible to source more licensed visuals
+Improve material-template to make it more visually appealing, once it is possible to source more licensed visuals.
+find another method to add page transitions as gatsby-plugin-page-transitions isn't compatible with Gatsby 2
 ### Getting Started
 1. **Clone this repository**
 ```bash

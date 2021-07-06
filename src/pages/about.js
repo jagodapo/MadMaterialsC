@@ -7,7 +7,7 @@ import theme from "../theme"
 import PatternAbout from "../components/svg/pattern-about"
 import Head from "../components/head/head"
 import MMForm from "../components/form/form"
-import PageTransition from 'gatsby-plugin-page-transitions'
+
 const useStyles = makeStyles({
   img: {
     width: "100%",
@@ -36,7 +36,6 @@ const useStyles = makeStyles({
 const AboutPage = () => {
   const classes = useStyles()
   return (
-    <PageTransition>
 
     <Layout>
     <Head title="About" />
@@ -73,7 +72,6 @@ const AboutPage = () => {
         </Grid>
       </Grid>
     </Layout>
-    </PageTransition>
 
   )
 }

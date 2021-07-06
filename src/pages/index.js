@@ -9,7 +9,6 @@ import { Link } from "gatsby"
 import PatternHomePage from "../components/svg/pattern-home-page"
 import PatternHomePageDesktop from "../components/svg/pattern-home-page-desktop"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
-import PageTransition from 'gatsby-plugin-page-transitions'
 import star from "../images/star.svg"
 
 const useStyles = makeStyles({
@@ -134,7 +133,6 @@ const IndexPage = () => {
   const isMedium = useMediaQuery(theme.breakpoints.down("md"))
 
   return (
-    <PageTransition>
 
     <Layout>
     <Head title="Home"/>
@@ -225,7 +223,6 @@ const IndexPage = () => {
         </Grid>
       </div>
     </Layout>
-    </PageTransition>
 
   )
 }

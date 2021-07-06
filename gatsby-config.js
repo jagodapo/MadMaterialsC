@@ -12,13 +12,6 @@ module.exports = {
     
     `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-plugin-page-transitions',
-      options: {
-        transitionTime: 500
-      }
-    },
-
-    {
       resolve: "gatsby-source-contentful",
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
