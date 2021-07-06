@@ -1,9 +1,5 @@
 import React, { useState } from "react"
-import Drawer from "@material-ui/core/drawer"
-import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemText from "@material-ui/core/ListItemText"
-import IconButton from "@material-ui/core/IconButton"
+import { Drawer, List, ListItem, ListItemText,  IconButton } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import { Link } from "gatsby"
 
