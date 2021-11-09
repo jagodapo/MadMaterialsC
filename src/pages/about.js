@@ -29,21 +29,19 @@ const useStyles = makeStyles({
   },
   link: {
     color: theme.palette.primary.main,
-  }
-
+  },
 })
 
 const AboutPage = () => {
   const classes = useStyles()
   return (
-
     <Layout>
-    <Head title="About" />
+      <Head title="About" />
       <Grid container className={classes.grid}>
         <Grid item xs={12} md={5}>
           <Box m={5} className={classes.typoWrapper}>
             <Typography variant="h1" className={classes.header}>
-             Mad Materials Lab
+              Mad Materials Lab
             </Typography>
             <Box margin="0 auto" position="relative" top="-20px">
               <PaintHighlight />
@@ -55,24 +53,30 @@ const AboutPage = () => {
               for material innovation and hopefully - inspire others to explore
               this field. This educational project is an invitation for creators
               and curious minds to dive into the world of material innovation
-              and bio-fabrication. The project was developed with the support from 
-               <span> <a href="https://fundacja.orange.pl/" target="_blank " className={classes.link}>  the Orange Foundation. </a> </span> If you have any questions, don't
-              hestitate to get in touch!
+              and bio-fabrication. The project was developed with the support
+              from
+              <span>
+                {" "}
+                <a
+                  href="https://www.fondationorange.com/"
+                  target="_blank "
+                  className={classes.link}
+                >
+                  {" "}
+                  the Orange Foundation.{" "}
+                </a>{" "}
+              </span>{" "}
+              If you have any questions, don't hestitate to get in touch!
             </Typography>
-           
-            <MMForm/>
-            
+
+            <MMForm />
           </Box>
-          
         </Grid>
         <Grid item xs={10} md={5}>
-        <PatternAbout/>
-     
-          
+          <PatternAbout />
         </Grid>
       </Grid>
     </Layout>
-
   )
 }
 

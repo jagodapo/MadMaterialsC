@@ -15,10 +15,7 @@ import Logo from "../svg/logo"
 
 const useStyles = makeStyles(theme => ({
   appbar: {
-    boxShadow: "0px 0px 0px 0px",
-    borderTop: "2px solid #325743",
-    borderBottom: "2px solid #325743",
-    backgroundColor: theme.palette.primary.contrastText,
+    backgroundColor: theme.palette.secondary.main,
     justifyContent: "center",
     position: "static",
     [theme.breakpoints.up("sm")]: {
@@ -29,7 +26,8 @@ const useStyles = makeStyles(theme => ({
   toolbar: {
     height: 54,
     width: "100%",
-    // maxWidth: 1200,
+    backgroundColor: theme.palette.secondary.main,
+
     margin: "auto auto",
   },
   root: {
@@ -42,11 +40,7 @@ const useStyles = makeStyles(theme => ({
       top: 0,
     },
   },
-  box: {
-    backgroundColor: theme.palette.primary.contrastText,
-    height: 20,
-    width: "100%",
-  },
+
   mobileMenuBox: {
     backgroundColor: theme.palette.primary.main,
     boxShadow: "0px 0px 0px 0px",
@@ -85,46 +79,37 @@ const Header = () => {
 
   return (
     <>
-      <Box className={classes.box}></Box>
-
       <div className={classes.root}>
-        <AppBar className={classes.appbar}>
-          <Container maxWidth="lg">
-            <Toolbar className={classes.toolbar}>
-              <Logo />
-              <Typography variant="h6" className={classes.title}>
-                Photos
-              </Typography>
-
-              <div>
-                {isMobile ? (
-                  <>
+        <div>
+          {isMobile ? (
+            <>
+              <AppBar className={classes.appbar} position="static">
+                <Container maxWidth="lg">
+                  <Toolbar className={classes.toolbar}>
                     <DrawerC />
-                  </>
-                ) : (
-                  <>
-                    <Box>
-                      <Link to="/" style={{ textDecoration: "none" }}>
-                        <Button className={classes.menuButtonLg}>Home</Button>
-                      </Link>
-                      <Link to="/discover" style={{ textDecoration: "none" }}>
-                        <Button className={classes.menuButtonLg}>
-                          Discover
-                        </Button>
-                      </Link>
-                      <Link to="/blog" style={{ textDecoration: "none" }}>
-                        <Button className={classes.menuButtonLg}>Blog</Button>
-                      </Link>
-                      <Link to="/about" style={{ textDecoration: "none" }}>
-                        <Button className={classes.menuButtonLg}>About</Button>
-                      </Link>
-                    </Box>
-                  </>
-                )}
-              </div>
-            </Toolbar>
-          </Container>
-        </AppBar>
+                  </Toolbar>
+                </Container>
+              </AppBar>
+            </>
+          ) : (
+            <>
+              <Box>
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  <Button className={classes.menuButtonLg}>Home</Button>
+                </Link>
+                <Link to="/discover" style={{ textDecoration: "none" }}>
+                  <Button className={classes.menuButtonLg}>Discover</Button>
+                </Link>
+                <Link to="/blog" style={{ textDecoration: "none" }}>
+                  <Button className={classes.menuButtonLg}>Blog</Button>
+                </Link>
+                <Link to="/about" style={{ textDecoration: "none" }}>
+                  <Button className={classes.menuButtonLg}>About</Button>
+                </Link>
+              </Box>
+            </>
+          )}
+        </div>
       </div>
     </>
   )
