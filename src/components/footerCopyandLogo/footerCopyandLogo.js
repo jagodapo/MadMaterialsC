@@ -43,7 +43,7 @@ const FooterCopyandLogo = () => {
           infomadmaterials@gmail.com | © 2020 Mad Materials all rights reserved
           | created with the support from <span />
           <a
-            href="https://www.fondationorange.com/"
+            href="https://www.fondationorange.com"
             className={classes.link}
             target="_blank"
             rel="noopener noreferrer"
