@@ -17,7 +17,7 @@ find another method to add page transitions as gatsby-plugin-page-transitions is
 ### Getting Started
 1. **Clone this repository**
 ```bash
-$ git clone https://github.com/rgneville/material-ui-site
+$ git clone https://github.com/jagodapo/MadMaterialsC.git
 ```
 2. **Cd into the repo**
 ```bash
